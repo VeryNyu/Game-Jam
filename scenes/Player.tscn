@@ -188,5 +188,7 @@ one_shot = true
 
 [node name="Hud" parent="." unique_id=1989488635 instance=ExtResource("6_70d11")]
 
+[node name="Node2D" type="Node2D" parent="." unique_id=46924343]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="start" from="Hud" to="." method="_on_hud_start"]

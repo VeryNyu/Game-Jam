@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dm6e5qbv8m5ww" path="res://assets/scenery/water.png" id="4_inly4"]
 [ext_resource type="Script" uid="uid://cyta1qybb8qp" path="res://scripts/water.gd" id="4_yyirk"]
 [ext_resource type="Texture2D" uid="uid://be6xa5hnqebkc" path="res://assets/scenery/deeperWater.png" id="5_7ctrk"]
+[ext_resource type="TileSet" uid="uid://425w5hrhdokf" path="res://assets/new_tile_set.tres" id="8_ii6k2"]
+[ext_resource type="Script" uid="uid://b4opurytwiyc2" path="res://scripts/tile_map_layer_3.gd" id="9_46d0c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ii6k2"]
 texture = ExtResource("4_inly4")
@@ -618,6 +620,11 @@ shape = SubResource("RectangleShape2D_41ykk")
 position = Vector2(826.5, 426)
 scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_inly4")
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=1285881285]
+tile_map_data = PackedByteArray("AAAXABsAAgAAAAUAAAAYABsAAgABAAUAAAAZABsAAgACAAUAAAAZABwAAgACAAYAAAAaABsAAgADAAUAAAAaABwAAgADAAYAAAAbABsAAgAEAAUAAAAbABwAAgAEAAYAAAAcABsAAgAFAAUAAAAcABwAAgAFAAYAAAAdABsAAgAGAAUAAAAdABwAAgAGAAYAAAAeABsAAgAHAAUAAAAfABsAAgAIAAUAAAA=")
+tile_set = ExtResource("8_ii6k2")
+script = ExtResource("9_46d0c")
 
 [connection signal="body_entered" from="Air" to="." method="_on_air_entered"]
 [connection signal="body_entered" from="Water" to="." method="_on_water_entered"]
