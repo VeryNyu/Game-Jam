@@ -176,8 +176,7 @@ offset_right = 168.5
 offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "You are not lost.
-You are only beginning your journey."
+text = "Phases of your life."
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true

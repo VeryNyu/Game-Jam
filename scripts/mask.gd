@@ -23,6 +23,7 @@ func _on_body_entered(body: Node2D) -> void:
 		collect.emit(flag)
 		match flag:
 			0:
+
 				position = Vector2(450, 480)
 				$Sprite2D.scale = Vector2(0.5, 0.5)
 				$Sprite2D.play("fish")
@@ -33,3 +34,7 @@ func _on_body_entered(body: Node2D) -> void:
 				hide()
 				$CollisionShape2D.set_deferred("disabled", true)
 		flag += 1
+
+
+func _on_timer_timeout() -> void:
+	$Control/Label.text = ""
