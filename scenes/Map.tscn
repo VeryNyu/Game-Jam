@@ -622,7 +622,7 @@ scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_inly4")
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=1285881285]
-tile_map_data = PackedByteArray("AAAXABsAAgAAAAUAAAAYABsAAgABAAUAAAAZABsAAgACAAUAAAAZABwAAgACAAYAAAAaABsAAgADAAUAAAAaABwAAgADAAYAAAAbABsAAgAEAAUAAAAbABwAAgAEAAYAAAAcABsAAgAFAAUAAAAcABwAAgAFAAYAAAAdABsAAgAGAAUAAAAdABwAAgAGAAYAAAAeABsAAgAHAAUAAAAfABsAAgAIAAUAAAA=")
+tile_map_data = PackedByteArray("AAAfABsAAgAIAAUAAAA=")
 tile_set = ExtResource("8_ii6k2")
 script = ExtResource("9_46d0c")
 

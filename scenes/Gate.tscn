@@ -27,4 +27,8 @@ shape = SubResource("RectangleShape2D_lajc7")
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_uwq7d")
 
+[node name="Timer" type="Timer" parent="." unique_id=1845218283]
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

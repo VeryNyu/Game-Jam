@@ -24,5 +24,6 @@ scale = Vector2(0.1, 0.1)
 position = Vector2(435, 440)
 
 [connection signal="forceShift" from="Map" to="Player" method="_on_force_shift"]
+[connection signal="collect" from="Mask" to="Map" method="_on_mask_collect"]
 [connection signal="collect" from="Mask" to="Player" method="_on_mask_collect"]
 [connection signal="body_entered" from="Gate" to="." method="_on_gate_entered"]
