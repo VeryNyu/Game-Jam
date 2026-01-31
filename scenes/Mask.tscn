@@ -1,26 +1,26 @@
 [gd_scene format=3 uid="uid://2cx8l5rsixd2"]
 
 [ext_resource type="Script" uid="uid://cub5ph28wiuag" path="res://scripts/mask.gd" id="1_3d20y"]
-[ext_resource type="Texture2D" uid="uid://dphutn7gqaf3n" path="res://assets/masks/mask_misc.jpg" id="1_eic0r"]
-[ext_resource type="Texture2D" uid="uid://62jhgiwmmesj" path="res://assets/masks/mask_fish.jpg" id="3_13t0l"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gh58q"]
-atlas = ExtResource("1_eic0r")
-region = Rect2(682, 341, 341, 341)
+[ext_resource type="Texture2D" uid="uid://c1v824dnnhew5" path="res://assets/masks/mask_misc.png" id="2_13t0l"]
+[ext_resource type="Texture2D" uid="uid://cej4q58u2xqqf" path="res://assets/masks/mask_fish.png" id="3_gh58q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_namr1"]
-atlas = ExtResource("1_eic0r")
-region = Rect2(341, 682, 341, 341)
+atlas = ExtResource("2_13t0l")
+region = Rect2(682, 341, 341, 341)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2fed6"]
-atlas = ExtResource("3_13t0l")
+atlas = ExtResource("2_13t0l")
+region = Rect2(341, 682, 341, 341)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p32sj"]
+atlas = ExtResource("3_gh58q")
 region = Rect2(0, 0, 1024, 1024)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p32sj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gh58q")
+"texture": SubResource("AtlasTexture_namr1")
 }],
 "loop": false,
 "name": &"bear",
@@ -28,7 +28,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_namr1")
+"texture": SubResource("AtlasTexture_2fed6")
 }],
 "loop": false,
 "name": &"eagle",
@@ -36,7 +36,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2fed6")
+"texture": SubResource("AtlasTexture_p32sj")
 }],
 "loop": false,
 "name": &"fish",
@@ -51,7 +51,7 @@ script = ExtResource("1_3d20y")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1288514886]
 sprite_frames = SubResource("SpriteFrames_p32sj")
-animation = &"bear"
+animation = &"fish"
 autoplay = "bear"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1284427665]
