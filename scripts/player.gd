@@ -1,60 +1,56 @@
 extends CharacterBody2D
 
-
 const SPEED: int = 200
 const GRAVITY: float = 1000.0
 const JUMP_FORCE: int = 150;
 const SCALE_OFFSET: float = 0.5
 const shapes = ["Man", "Bear", "Fish", "Eagle"]
 
+var GAME_START: bool = false
 var shape: String = "Man"
 var flag = 0
 var currentShape = 0
 
 func _ready() -> void:
-	$AnimatedSprite2D.hide()
 	$Intro.hide()
+	$Hud.show()
 	shift()
 	scale = Vector2(0.7, 0.7)
 	velocity.y = 0
-	
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("shift_quick"):
-		if currentShape < flag:
-			currentShape += 1
-		else: currentShape = 0
-		$AnimatedSprite2D.play(shapes[currentShape])
-		shift()
-	
-	if shape == "Man" or shape == "Bear":
-		if Input.is_action_pressed("move_up"):
-			if is_on_floor():
-				velocity.y += -JUMP_FORCE
-		elif Input.is_action_pressed("move_left"):
-			$AnimatedSprite2D.flip_h = false
-			position.x -= SPEED * delta
-		elif Input.is_action_pressed("move_right"):
-			$AnimatedSprite2D.flip_h = true
-			position.x += SPEED * delta
-		velocity.y += GRAVITY * delta
-		position.y += velocity.y * delta
-	else:
-		if Input.is_action_pressed("move_left"):
-			$AnimatedSprite2D.flip_h = false
-			position.x -= SPEED * delta
-		elif Input.is_action_pressed("move_right"):
-			$AnimatedSprite2D.flip_h = true
-			position.x += SPEED * delta
-		if Input.is_action_pressed("move_up"):
-			position.y -= SPEED * delta
-		elif Input.is_action_pressed("move_down"):
-			position.y += SPEED * delta
-	move_and_slide()
-
-func start():
-	position = Vector2(600.0, 400.0)
-	show()
+	if GAME_START:
+		if Input.is_action_just_pressed("shift_quick"):
+			if currentShape < flag:
+				currentShape += 1
+			else: currentShape = 0
+			$AnimatedSprite2D.play(shapes[currentShape])
+			shift()
+		
+		if shape == "Man" or shape == "Bear":
+			if Input.is_action_pressed("move_up"):
+				if is_on_floor():
+					velocity.y += -JUMP_FORCE
+			elif Input.is_action_pressed("move_left"):
+				$AnimatedSprite2D.flip_h = false
+				position.x -= SPEED * delta
+			elif Input.is_action_pressed("move_right"):
+				$AnimatedSprite2D.flip_h = true
+				position.x += SPEED * delta
+			velocity.y += GRAVITY * delta
+			position.y += velocity.y * delta
+		else:
+			if Input.is_action_pressed("move_left"):
+				$AnimatedSprite2D.flip_h = false
+				position.x -= SPEED * delta
+			elif Input.is_action_pressed("move_right"):
+				$AnimatedSprite2D.flip_h = true
+				position.x += SPEED * delta
+			if Input.is_action_pressed("move_up"):
+				position.y -= SPEED * delta
+			elif Input.is_action_pressed("move_down"):
+				position.y += SPEED * delta
+		move_and_slide()
 
 func _on_mask_collect(currentFlag: int) -> void:
 	flag += 1
@@ -116,4 +112,16 @@ func _on_force_shift(area: String) -> void:
 			shift()
 
 func _on_timer_timeout() -> void:
+	$Intro.hide()
+
+func _on_hud_start() -> void:
+	$Hud.hide()
 	$Intro.show()
+	$Timer.start()
+	position = Vector2(600.0, 400.0)
+	GAME_START = true
+
+
+func _on_gate_body_entered(body: Node) -> void:
+	if body.name == "Player" and body.get_node("AnimatedSprite2D").animation == "Bear":
+		queue_free()

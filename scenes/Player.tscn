@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://er1p7fsfriqs" path="res://assets/player/bear.png" id="2_mdl7e"]
 [ext_resource type="Texture2D" uid="uid://dwwkv7j6t3l5t" path="res://assets/player/eagle.png" id="3_qu4a1"]
 [ext_resource type="Texture2D" uid="uid://bj2fw73elufu4" path="res://assets/player/man.png" id="4_mdl7e"]
+[ext_resource type="PackedScene" uid="uid://ch7e4ai24f48" path="res://scenes/HUD.tscn" id="6_70d11"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mdl7e"]
 atlas = ExtResource("2_mdl7e")
@@ -185,4 +186,7 @@ uppercase = true
 wait_time = 3.0
 one_shot = true
 
+[node name="Hud" parent="." unique_id=1989488635 instance=ExtResource("6_70d11")]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="start" from="Hud" to="." method="_on_hud_start"]

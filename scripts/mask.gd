@@ -23,11 +23,11 @@ func _on_body_entered(body: Node2D) -> void:
 		collect.emit(flag)
 		match flag:
 			0:
-				position = Vector2(500, 680)
+				position = Vector2(450, 480)
 				$Sprite2D.scale = Vector2(0.5, 0.5)
 				$Sprite2D.play("fish")
 			1:
-				position = Vector2(1060, 750)
+				position = Vector2(1060, 740)
 				$Sprite2D.play("eagle")
 			2:
 				hide()

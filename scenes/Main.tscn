@@ -4,19 +4,25 @@
 [ext_resource type="Script" uid="uid://do6x6s6kugmpm" path="res://scripts/main.gd" id="1_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://qxeglv4ti38c" path="res://scenes/Player.tscn" id="2_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://2cx8l5rsixd2" path="res://scenes/Mask.tscn" id="3_0bbpv"]
+[ext_resource type="PackedScene" uid="uid://bn4idb5xpxsx" path="res://scenes/Gate.tscn" id="5_vcsgt"]
 
 [node name="Main" type="Node2D" unique_id=242464519]
 script = ExtResource("1_vcsgt")
 
 [node name="Map" parent="." unique_id=1197262305 instance=ExtResource("1_rvslj")]
+position = Vector2(9, -2)
 
 [node name="Player" parent="." unique_id=316984297 instance=ExtResource("2_0bbpv")]
 position = Vector2(600, 400)
 scale = Vector2(1, 1)
 
 [node name="Mask" parent="." unique_id=505974108 instance=ExtResource("3_0bbpv")]
-position = Vector2(500, 680)
+position = Vector2(450, 480)
 scale = Vector2(0.1, 0.1)
+
+[node name="Gate" parent="." unique_id=296339058 instance=ExtResource("5_vcsgt")]
+position = Vector2(435, 440)
 
 [connection signal="forceShift" from="Map" to="Player" method="_on_force_shift"]
 [connection signal="collect" from="Mask" to="Player" method="_on_mask_collect"]
+[connection signal="body_entered" from="Gate" to="." method="_on_gate_entered"]
