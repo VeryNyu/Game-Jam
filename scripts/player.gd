@@ -54,10 +54,11 @@ func _physics_process(delta: float) -> void:
 
 func _on_mask_collect(currentFlag: int) -> void:
 	match flag:
-		0:$Intro.text = "Spring brings a new, run strong run fast."
+		0: $Intro.text = "Spring brings a new, run strong run fast."
 		1: $Intro.text = "Meander through the changing currents of life."
 		2: $Intro.text = "Move on freely to bring good blessings to all."
 	$Intro.show()
+	$Timer.start()
 	flag += 1
 	currentShape = currentFlag + 1
 	shift()
