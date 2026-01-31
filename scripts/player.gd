@@ -11,7 +11,7 @@ var flag = 0
 var currentShape = 0
 
 func _ready() -> void:
-	setCollision()
+	shift()
 	velocity.y = 0
 	
 func _physics_process(delta: float) -> void:
@@ -20,44 +20,30 @@ func _physics_process(delta: float) -> void:
 			currentShape += 1
 		else: currentShape = 0
 		$AnimatedSprite2D.play(shapes[currentShape])
-		setCollision()
+		shift()
 	
-	match shape:
-		"Man":
-			if Input.is_action_pressed("move_up"):
-				if is_on_floor():
-					velocity.y += -JUMPFORCE
-			elif  Input.is_action_pressed("move_left"):
-				$AnimatedSprite2D.flip_h = false
-				position.x -= SPEED * delta
-			elif  Input.is_action_pressed("move_right"):
-				$AnimatedSprite2D.flip_h = true
-				position.x += SPEED * delta
-			velocity.y += GRAVITY * delta
-			position.y += velocity.y * delta
-		"Bear":
-			if Input.is_action_pressed("move_up"):
-				if is_on_floor():
-					velocity.y += -JUMPFORCE
-			elif  Input.is_action_pressed("move_left"):
-				$AnimatedSprite2D.flip_h = false
-				position.x -= SPEED * delta
-			elif  Input.is_action_pressed("move_right"):
-				$AnimatedSprite2D.flip_h = true
-				position.x += SPEED * delta
-			velocity.y += GRAVITY * delta
-			position.y += velocity.y * delta
+	if shape == "Man" or "Bear":
+		if Input.is_action_pressed("move_up"):
+			if is_on_floor():
+				velocity.y += -JUMPFORCE
+		elif  Input.is_action_pressed("move_left"):
+			$AnimatedSprite2D.flip_h = false
+			position.x -= SPEED * delta
+		elif  Input.is_action_pressed("move_right"):
+			$AnimatedSprite2D.flip_h = true
+			position.x += SPEED * delta
+		velocity.y += GRAVITY * delta
+		position.y += velocity.y * delta
 	move_and_slide()
-
 
 func _on_mask_collect() -> void:
 	match flag:
 		0:
 			$AnimatedSprite2D.play("Bear")
 	flag += 1
-	setCollision()
+	shift()
 
-func setCollision():
+func shift():
 	shape = shapes[currentShape]
 	
 	var pos: Vector2

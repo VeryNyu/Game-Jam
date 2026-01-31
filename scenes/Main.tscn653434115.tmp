@@ -17,4 +17,4 @@ position = Vector2(588, 379)
 position = Vector2(500, 680)
 scale = Vector2(0.1, 0.1)
 
-[connection signal="collect" from="Mask" to="Player" method="_on_mask_collect"]
+[connection signal="collect" from="Mask" to="." method="_on_mask_collect"]
