@@ -789,7 +789,7 @@ size = Vector2(63.639526, 20)
 size = Vector2(79, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ii6k2"]
-size = Vector2(97, 106)
+size = Vector2(223.5, 106)
 
 [node name="Map" type="Node2D" unique_id=1751233048]
 script = ExtResource("1_yyirk")
@@ -855,7 +855,7 @@ script = ExtResource("9_46d0c")
 [node name="Area2D" type="Area2D" parent="." unique_id=1971149431]
 
 [node name="Goal" type="CollisionShape2D" parent="Area2D" unique_id=699233624]
-position = Vector2(48, 58)
+position = Vector2(111, 65)
 shape = SubResource("RectangleShape2D_ii6k2")
 
 [connection signal="body_entered" from="Air" to="." method="_on_air_entered"]
